@@ -129,3 +129,10 @@ vim.g.fzf_vim = {
 -- TODO: terminar configuração
 -- Termux configuração
 vim.env.LANG = 'pt_BR.UTF-8'
+
+-- Criando TEMP variável para o ambiente
+vim.env.TEMP = vim.fs.joinpath(
+    vim.env.HOME,
+    '.temp'
+)
+

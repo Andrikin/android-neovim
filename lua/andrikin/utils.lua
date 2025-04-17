@@ -373,11 +373,12 @@ Latex.__index = Latex
 ---@return Latex
 Latex.new = function()
     local latex = setmetatable({
+        -- TODO: qual executável utilizar para abrir os pdf's criados
         executavel = vim.fn.fnamemodify(vim.fn.glob(tostring(Utils.Opt / 'sumatra' / 'sumatra*.exe')), ':t'),
         diretorios = {
-            modelos = Diretorio.new(vim.fn.fnamemodify(vim.env.HOME, ':h')) / 'projetos' / 'ouvidoria-latex-modelos',
+            modelos = Diretorio.new(vim.env.HOME) / 'projetos' / 'ouvidoria-latex-modelos',
 ---@diagnostic disable-next-line: undefined-field
-            download = Diretorio.new(vim.uv.os_homedir()) / 'Downloads',
+            download = Diretorio.new(vim.env.HOME) / 'storage' / 'downloads',
             temp = Diretorio.new(vim.env.TEMP),
             redelocal = Diretorio.new('T:') / '1-Comunicação Interna - C.I' / os.date('%Y'),
         }
