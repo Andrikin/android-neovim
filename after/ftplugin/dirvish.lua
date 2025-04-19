@@ -9,7 +9,7 @@ local open = function(arquivo)
     )
 end
 vim.keymap.set('n', 'go', function()
-    open = vim.ui.open or open
+    -- open = vim.ui.open or open
     local arquivo = vim.fn.getline('.'):gsub('\\', '\\/'):gsub('\\/$', ''):gsub('\\$', '')
     local extencao = vim.fn.fnamemodify(arquivo, ':e')
     if extencao ~= '' and vim.fn.isdirectory(arquivo) == 0 then
