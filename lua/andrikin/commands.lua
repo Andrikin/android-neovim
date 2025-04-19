@@ -24,6 +24,20 @@ command(
 )
 
 command(
+	'Downloads',
+	function()
+		vim.cmd.Dirvish(
+            vim.fs.joinpath(
+                vim.env.HOME,
+                'storage',
+                'downloads'
+            )
+        )
+	end,
+	{}
+)
+
+command(
 	'Reload',
     require('andrikin.utils').reload,
 	{}
