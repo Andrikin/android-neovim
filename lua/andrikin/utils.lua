@@ -1,7 +1,5 @@
 ---@class Utils
 ---@field Diretorio Diretorio
----@field SauceCodePro SauceCodePro
----@field Registrador Registrador
 ---@field Programa Programa
 ---@field Projetos Diretorio
 ---@field Ssh Ssh
@@ -373,14 +371,12 @@ Latex.__index = Latex
 ---@return Latex
 Latex.new = function()
     local latex = setmetatable({
-        -- TODO: qual executável utilizar para abrir os pdf's criados
-        executavel = vim.fn.fnamemodify(vim.fn.glob(tostring(Utils.Opt / 'sumatra' / 'sumatra*.exe')), ':t'),
+        executavel = 'termux-open',
         diretorios = {
             modelos = Diretorio.new(vim.env.HOME) / 'projetos' / 'ouvidoria-latex-modelos',
 ---@diagnostic disable-next-line: undefined-field
             download = Diretorio.new(vim.env.HOME) / 'storage' / 'downloads',
             temp = Diretorio.new(vim.env.TEMP),
-            redelocal = Diretorio.new('T:') / '1-Comunicação Interna - C.I' / os.date('%Y'),
         }
     }, Latex)
     latex:init()
@@ -423,7 +419,7 @@ Latex.compilar = function(self, destino, temp)
         vim.cmd.redraw({bang = true})
     end
     temp = temp or self.diretorios.temp
-    destino = destino or self.diretorios.redelocal
+    destino = destino or self.diretorios.download
     local has_gs = vim.fn.executable('gs.exe') == 1
     local tex = vim.fn.expand('%:p')
     local arquivo = vim.fn.fnamemodify(tex, ':t'):gsub('tex$', 'pdf')
