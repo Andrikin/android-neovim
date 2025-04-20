@@ -17,18 +17,18 @@ vim.opt.rtp:prepend(lazypath)
 local tokyonight = {
     nome = 'tokyonight',
     link = 'https://github.com/folke/tokyonight.nvim.git',
-    -- config = function()
-    --     vim.api.nvim_set_hl(0, 'CursorLine', {link = 'Visual'})
-    -- end
+    opts = {
+        styles = {
+            comments = { italic = false },
+            keywords = { italic = false },
+        },
+    }
 }
 -- local dracula = {
 --     nome = 'dracula',
 --     url = 'https://github.com/Mofiqul/dracula.nvim.git'
 -- }
 local tema = tokyonight
-if tema.config then
-    tema.config()
-end
 
 local has_rm = vim.fn.executable('rm') == 1
 local has_mkdir = vim.fn.executable('mkdir') == 1
@@ -46,14 +46,13 @@ local plugins = {
 		'https://github.com/tpope/vim-dadbod.git',
 		lazy = true,
 	},
-    -- Theme
+    -- Configuração do tema utilizado
     {
         tema.link,
         priority = 1000,
         lazy = false,
-		config = function()
-			vim.cmd.colorscheme(tema.nome)
-		end
+		config = tema.config,
+        opts = tema.opts,
     },
 	-- Vim Cool,
 	'https://github.com/romainl/vim-cool.git',
@@ -185,3 +184,4 @@ vim.cmd.packadd('matchit')
 -- vim.cmd.packadd('termdebug')
 -- vim.cmd.packadd('vimball')
 
+return tema

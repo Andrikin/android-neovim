@@ -76,6 +76,7 @@ vim.opt.guifont = 'SauceCodePro NFM:h11'
 vim.opt.winborder = 'rounded'
 vim.opt.inccommand = '' -- conflict with traces.vim
 vim.opt.fillchars = 'vert:|,fold:*,foldclose:+,diff:-'
+vim.cmd.colorscheme(require('andrikin.lazy').nome)
 
 -- Using ripgrep populate quickfix/localfix lists ([cf]open; [cf]do {cmd} | update)
 if vim.fn.executable('rg') == 1 then
