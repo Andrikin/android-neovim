@@ -1,4 +1,8 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fs.joinpath(
+    vim.fn.stdpath("data"),
+    "lazy",
+    "lazy.nvim"
+)
 -- Inicializando caminho para git
 ---@diagnostic disable-next-line: undefined-field
 if not vim.uv.fs_stat(lazypath) then
