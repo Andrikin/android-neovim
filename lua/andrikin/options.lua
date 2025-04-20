@@ -136,3 +136,5 @@ vim.env.TEMP = vim.fs.joinpath(
     '.temp'
 )
 
+-- Adicionando denols ao PATH
+vim.env.PATH = vim.env.PATH .. ":data/data/com.termux/files/home/.config/nvim/opt/denols/"
