@@ -46,7 +46,7 @@ vim.opt.title = true
 vim.opt.hidden = true
 vim.opt.mouse = ''
 vim.opt.mousemodel = 'extend'
-if vim.fn.has('persistent_undo') == 0 then
+if vim.fn.has('persistent_undo') == 1 then
     local path = vim.fs.joinpath(
         vim.fn.stdpath('data'),
         'undotree'
@@ -138,3 +138,4 @@ vim.env.TEMP = vim.fs.joinpath(
 
 -- Adicionando denols ao PATH
 vim.env.PATH = vim.env.PATH .. ":data/data/com.termux/files/home/.config/nvim/opt/denols/"
+
