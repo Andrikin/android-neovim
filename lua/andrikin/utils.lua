@@ -392,7 +392,7 @@ Latex.init = function(self)
     if not vim.env.TEXINPUTS then
         vim.env.TEXINPUTS = '.;' .. self.diretorios.modelos.diretorio .. ';' -- não é necessário para Windows
     end
-    if vim.fn.executable('gs.exe') == 0 then
+    if vim.fn.executable('gs') == 0 then
         Utils.notify('Latex: realizar instalação de GhostScript com o comando Cygwin')
     end
 end
