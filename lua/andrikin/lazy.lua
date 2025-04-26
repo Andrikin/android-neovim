@@ -41,6 +41,9 @@ local tema = tokyonight
 local has_rm = vim.fn.executable('rm') == 1
 local has_mkdir = vim.fn.executable('mkdir') == 1
 local plugins = {
+	-- My plugins
+	'https://github.com/Andrikin/awesome-pairing.git',
+	'https://github.com/Andrikin/awesome-substitute.git',
 	-- Fork Tim Pope vim-capslock
 	'https://github.com/Andrikin/vim-capslock',
 	-- Tim Pope's miracles
@@ -120,6 +123,7 @@ local plugins = {
 	{
         'https://github.com/neovim/nvim-lspconfig.git',
         dependencies = {
+            ft = 'lua',
             'https://github.com/folke/lazydev.nvim.git', -- signature help, docs and completion for nvim lua API
         }
     },
@@ -133,10 +137,45 @@ local plugins = {
 	'https://github.com/markonm/traces.vim.git',
 	-- Undotree,
 	'https://github.com/mbbill/undotree.git',
-    -- Snippets
+    -- autocompletion engine
     {
-        'https://github.com/L3MON4D3/LuaSnip.git',
-        dependencies = 'https://github.com/rafamadriz/friendly-snippets.git',
+        'https://github.com/Saghen/blink.cmp.git',
+        version = '1.*',
+        opts = {
+            cmdline = { enabled = false },
+            snippets = { preset = 'luasnip' },
+            keymap = {
+                preset = 'default',
+                ['<c-space>'] = {},
+                ['<c-j>'] = {'select_and_accept', 'fallback'},
+            },
+            -- (Default) Only show the documentation popup when manually triggered
+            completion = {
+                menu = {
+                    -- auto_show = false,
+                    border = 'none',
+                    draw = {
+                        columns = { { "label", "label_description", gap = 1 }, { "kind" } },
+                    }
+                },
+                list = {
+                    selection = {
+                        preselect = false, auto_insert = true
+                    }
+                },
+                documentation = { auto_show = false }
+            },
+            -- Default list of enabled providers defined so that you can extend it
+            -- elsewhere in your config, without redefining it, due to `opts_extend`
+            sources = {
+                default = { 'lsp', 'snippets', 'buffer', 'path' },
+            },
+        },
+        -- Snippets
+        dependencies = {
+            'https://github.com/rafamadriz/friendly-snippets.git',
+            'https://github.com/L3MON4D3/LuaSnip.git',
+        },
     },
     -- Telescope
 	{
@@ -170,7 +209,7 @@ local opts = {
 				"netrwPlugin",
 				-- "tarPlugin",
 				-- "tohtml",
-				-- "tutor",
+				"tutor",
 				-- "zipPlugin",
 			},
 		},

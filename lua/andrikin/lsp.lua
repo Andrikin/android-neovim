@@ -109,16 +109,19 @@ else
     notify('Telescope: extenção fzf carregada com sucesso')
 end
 
-local luasnip = require('luasnip')
+-- carregar snippets (LuaSnip)
+require('luasnip').config.set_config({
+	history = true,
+})
 require('luasnip.loaders.from_vscode').lazy_load() -- carregar snippets (templates)
-require("luasnip.loaders.from_lua").load({
-    ---@diagnostic disable-next-line: assign-type-mismatch
-    paths = vim.fs.joinpath( -- carregar snippets customizadas
-        vim.fn.fnamemodify(vim.env.MYVIMRC, ':h'),
+require('luasnip.loaders.from_lua').lazy_load({
+---@diagnostic disable-next-line: assign-type-mismatch
+    paths = vim.fs.joinpath(
+        ---@diagnostic disable-next-line: param-type-mismatch
+        vim.fn.stdpath('config'),
         'snippets'
     )
 })
-luasnip.config.setup({})
 
 -- Ativar LSP nos buffers, automaticamente -- Neovim 0.11
 vim.lsp.enable({
