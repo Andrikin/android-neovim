@@ -38,7 +38,7 @@ vim.opt.autoread = true
 vim.opt.tabpagemax = 50
 vim.opt.wildmenu = true
 -- vim.opt.completeopt = 'menu,menuone,noselect'
-vim.opt.completeopt = 'menuone,noinsert,noselect,popup'
+vim.opt.completeopt = 'menu,noinsert,noselect,popup,fuzzy'
 vim.g.shell = vim.env.TERM
 --let &g:shellpipe = '2>&1 | tee'
 vim.opt.complete:remove('t')
@@ -48,6 +48,7 @@ vim.opt.mouse = ''
 vim.opt.mousemodel = 'extend'
 if vim.fn.has('persistent_undo') == 1 then
     local path = vim.fs.joinpath(
+		---@diagnostic disable-next-line: param-type-mismatch
         vim.fn.stdpath('data'),
         'undotree'
     )
