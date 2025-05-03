@@ -191,12 +191,48 @@ local plugins = {
                 end,
             },
 		},
-	},
-	-- Treesitter,
-    {
+	},{-- Treesitter
         'https://github.com/nvim-treesitter/nvim-treesitter.git',
-        build = ':TSUpdate',
-    },
+        build = ':TSUpdate'
+    },{ -- autocompletion engine
+        'https://github.com/Saghen/blink.cmp.git',
+        version = '1.*',
+        opts = {
+            cmdline = { enabled = false },
+            snippets = { preset = 'luasnip' },
+            keymap = {
+                preset = 'default',
+                ['<c-space>'] = {},
+                ['<c-j>'] = {'select_and_accept', 'fallback'},
+            },
+            -- (Default) Only show the documentation popup when manually triggered
+            completion = {
+                menu = {
+                    -- auto_show = false,
+                    border = 'none',
+                    draw = {
+                        columns = { { "label", "label_description", gap = 1 }, { "kind" } },
+                    }
+                },
+                list = {
+                    selection = {
+                        preselect = false, auto_insert = true
+                    }
+                },
+                documentation = { auto_show = false }
+            },
+            -- Default list of enabled providers defined so that you can extend it
+            -- elsewhere in your config, without redefining it, due to `opts_extend`
+            sources = {
+                default = { 'lsp', 'snippets', 'buffer', 'path' },
+            },
+        },
+        -- Snippets
+        dependencies = {
+            'https://github.com/rafamadriz/friendly-snippets.git',
+            'https://github.com/L3MON4D3/LuaSnip.git',
+        },
+    }
 }
 
 local opts = {

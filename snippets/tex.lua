@@ -19,6 +19,9 @@ return {
     s('noindent', t("{\\noindent}")),
     s('pagebreak', {t("\\pagebreak["), i(1, '4'), t("]")}),
     -- Comandos customizados Latex
+    s({trig = 'Ocorrencia'},
+        {t("\\Ocorrencia{"), i(1), t("}["), i(2, vim.fn.strftime('%Y')), t("]")}
+    ),
     s({trig = 'Associados'},
         {t("{\\Associados}")}
     ),
@@ -99,4 +102,3 @@ Prezados,
         )
     ),
 }
-

@@ -109,6 +109,11 @@ else
     notify('Telescope: extenção fzf carregada com sucesso')
 end
 
+-- Mensagem de erro mais curta
+vim.diagnostic.config({
+    underline = true,
+})
+
 -- carregar snippets (LuaSnip)
 require('luasnip').config.set_config({
 	history = true,
