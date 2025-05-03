@@ -18,7 +18,10 @@ command(
 command(
 	'Projetos',
 	function()
-		vim.cmd.Dirvish(Ouvidoria.ci.diretorios.projetos.diretorio)
+		vim.cmd.Dirvish(vim.fs.joinpath(
+            vim.env.HOME,
+            'projetos'
+        ))
 	end,
 	{}
 )
