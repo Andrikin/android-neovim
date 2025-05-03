@@ -108,11 +108,6 @@ vim.g.undotree_DiffpanelHeight = 10
 -- Disable Netrw
 vim.g.loaded_netrwPlugin = 1
 
--- Mensagem de erro mais curta
-vim.diagnostic.config({
-    virtual_lines = true,
-})
-
 -- Python provider
 vim.g.python3_host_prog = vim.fn.systemlist('which python3')[1]
 
