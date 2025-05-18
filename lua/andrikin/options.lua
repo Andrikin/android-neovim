@@ -101,8 +101,7 @@ vim.g.traces_num_range_preview = 0
 vim.g.undotree_WindowLayout = 1
 vim.g.undotree_ShortIndicators = 1
 vim.g.undotree_SetFocusWhenToggle = 1
-vim.g.undotree_DiffpanelHeight = 10
--- vim.g.undotree_DiffAutoOpen = 1
+vim.g.undotree_DiffAutoOpen = 0
 
 -- --- Netrw ---
 -- Disable Netrw
